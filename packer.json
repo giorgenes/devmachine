@@ -1,0 +1,35 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "devmachine.ova",
+      "ssh_username": "dev",
+      "ssh_password": "dev",
+      "shutdown_command": "echo 'dev' | sudo -S shutdown -P now"
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "install-scripts/sudo.sh"
+    },
+    {
+      "type": "shell",
+      "script": "install-scripts/setup.sh"
+    },
+    {
+      "type": "shell",
+      "script": "install-scripts/docker.sh"
+    },
+    {
+      "type": "shell",
+      "script": "install-scripts/ruby.sh"
+    },
+    {
+      "type": "shell",
+      "script": "install-scripts/code-server.sh"
+    }
+  ]
+}
+
